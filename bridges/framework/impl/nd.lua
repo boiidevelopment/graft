@@ -395,14 +395,24 @@ if graft.is_server then
     end
 
     --- @section Usable Items
-
+    
     --- Register an item as usable for different frameworks.
     --- @param item string: The item identifier.
     --- @param cb function: The callback function to execute when the item is used.
     function bridge.register_item(item, cb)
-        if not item then return false end
-
-        --- @todo nd register item method
+        if not item or type(cb) ~= "function" then return false end
+    
+        exports(item, function(event, itemData, inventory, slot, data)
+            local src = inventory.id or source
+            if event == "usingItem" then
+                return
+            elseif event == "usedItem" then
+                cb(src, itemData, slot, data)
+            elseif event == 'buying' then
+            end
+        end)
+    
+        return true
     end
 
 else
@@ -451,3 +461,4 @@ end
 
 
 return bridge
+
