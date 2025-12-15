@@ -7,7 +7,7 @@
     Support honest development — retain this credit. Don"t be that guy...
 ]]
 
-if graft.framework ~= "esx" then return end
+if graft.framework ~= "nd" then return end
 
 local bridge = {}
 
@@ -423,7 +423,7 @@ else
     --- @param key string (optional): The key of the data to retrieve.
     --- @return table: The requested player data.
     function bridge.get_data()
-        local player_data = ESX.GetPlayerData()
+        local player_data = exports.ND_Core:getPlayer()
 
         return player_data
     end
@@ -435,10 +435,10 @@ else
         if not player then return false end
 
         local identity = {
-            first_name = player.firstName or "firstName missing",
-            last_name = player.lastName or "lastName missing",
-            dob = player.dateofbirth or "dateofbirth missing",
-            sex = player.sex or "sex missing",
+            first_name = player.firstname or "firstName missing",
+            last_name = player.lastname or "lastName missing",
+            dob = player.dob or "dateofbirth missing",
+            sex = player.gender or "sex missing",
             nationality = player.nationality or "LS, Los Santos"
         }
     

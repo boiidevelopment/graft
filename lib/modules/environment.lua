@@ -12,6 +12,15 @@
 
 local environment = {}
 
+--- Retrieves the player's altitude above sea level.
+--- @param source number: Player source ID (server-side only, optional on client).
+--- @return number: Altitude value.
+function environment.get_altitude(source)
+    local player_ped = core.is_server and GetPlayerPed(source) or PlayerPedId()
+    return player_ped and GetEntityCoords(player_ped).z or 0
+end
+
+
 if not graft.is_server then
 
     --- Retrieves the human-readable name of the weather from its hash.
@@ -155,12 +164,6 @@ if not graft.is_server then
         local directions = { "N", "NE", "E", "SE", "S", "SW", "W", "NW" }
 
         return directions[math.floor(((angle + 22.5) % 360) / 45) + 1] or "Unknown"
-    end
-
-    --- Retrieves the player"s altitude above sea level.
-    --- @return number: Altitude value.
-    function environment.get_altitude()
-        return GetEntityCoords(PlayerPedId()).z
     end
 
     --- Retrieves environment details.

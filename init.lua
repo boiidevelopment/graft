@@ -153,15 +153,6 @@ graft.data = setmetatable({}, {
     __index = function(_, k) return graft.get("lib.data." .. k) end
 })
 
---- @section Version Checking
-
-local opts = {
-    resource_name = "graft",
-    url_path = "playingintraffic/fivem_resources/refs/heads/main/versions.json",
-}
-local version <const> = graft.get("lib.modules.version")
-version.check(opts)
-
 --- @section Export Namespace
 
 --- Returns the full graft object for plugin usage.
