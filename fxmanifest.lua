@@ -26,7 +26,7 @@ fx_version "cerulean"
 games { "gta5", "rdr3" }
 
 name "graft"
-version "1.1.0"
+version "1.1.2"
 description "GRAFT - General Runtime Abstraction & Framework Toolkit"
 author "PlayingInTraffic"
 repository "https://github.com/playingintraffic/graft"
