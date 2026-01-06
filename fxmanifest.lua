@@ -1,25 +1,46 @@
---[[ 
-    This file is part of GRAFT (General Runtime Abstraction & Framework Toolkit) and is licensed under the MIT License.
-    See the LICENSE file in the root directory for full terms.
-
-    © 2025 Case @ Playing In Traffic
-
-    Support honest development — retain this credit. Don"t be that guy...
-]]
-
 --[[
-#########################################################
-#  ____  _        _ __   _____ _   _  ____   ___ _   _  #
-# |  _ \| |      / \\ \ / /_ _| \ | |/ ___| |_ _| \ | | #
-# | |_) | |     / _ \\ V / | ||  \| | |  _   | ||  \| | #
-# |  __/| |___ / ___ \| |  | || |\  | |_| |  | || |\  | #
-# |_|   |_____/_/   \_\_| |___|_| \_|\____| |___|_| \_| #
-#  _____ ____      _    _____ _____ ___ ____            #
-# |_   _|  _ \    / \  |  ___|  ___|_ _/ ___|           #
-#   | | | |_) |  / _ \ | |_  | |_   | | |               #
-#   | | |  _ <  / ___ \|  _| |  _|  | | |___            #
-#   |_| |_| \_\/_/   \_\_|   |_|   |___\____|           #              
-#########################################################
+--------------------------------------------------
+┏━┓╻  ┏━┓╻ ╻╻┏┓╻┏━╸   ╻┏┓╻   ╺┳╸┏━┓┏━┓┏━╸┏━╸╻┏━╸
+┣━┛┃  ┣━┫┗┳┛┃┃┗┫┃╺┓   ┃┃┗┫    ┃ ┣┳┛┣━┫┣╸ ┣╸ ┃┃  
+╹  ┗━╸╹ ╹ ╹ ╹╹ ╹┗━┛   ╹╹ ╹    ╹ ╹┗╸╹ ╹╹  ╹  ╹┗━╸
+--------------------------------------------------
+┏┓┳┓┏┓┏┓┏┳┓
+┃┓┣┫┣┫┣  ┃ 
+┗┛┛┗┛┗┻  ┻     
+--------------------------------------------------
+
+This file is part of GRAFT.
+You are free to use these files within your own resources.
+Please retain the original credit and attached MIT license.
+Support honest development.
+
+GitHub: https://github.com/playingintraffic/graft
+
+--------------------------------------------------
+
+MIT License
+
+Copyright (c) 2025 Playing In Traffic
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+--------------------------------------------------
 ]]
 
 fx_version "cerulean"
@@ -28,23 +49,16 @@ games { "gta5", "rdr3" }
 name "graft"
 version "1.1.2"
 description "GRAFT - General Runtime Abstraction & Framework Toolkit"
-author "PlayingInTraffic"
+author "Case"
 repository "https://github.com/playingintraffic/graft"
 lua54 "yes"
 
 fx_version "cerulean"
 game "gta5"
 
-server_script "@oxmysql/lib/MySQL.lua"
-
-shared_script "init.lua"
-server_script "users.lua" -- Required! user accounts handle permissions for commands etc.. dont remove.
-
 shared_scripts {
-    "lib/events/*.lua",
-    "lib/modules/*.lua",
-    "lib/callbacks/*lua",
-    "bridges/**/impl/*.lua",
-    "bridges/**/loader.lua",
+    "standalone/**/*.lua",
+    
+    "cfx/require.lua",
+    "cfx/fivem/**/*.lua"
 }
-

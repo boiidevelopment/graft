@@ -1,119 +1,205 @@
 ![pit_graft_thumb](https://github.com/user-attachments/assets/83551524-8d00-4f24-9590-bb0d9d38fd36)
 
+> **CURRENT PIT RESOURCES USE THE LATEST RELEASE VERSION PLEASE DOWNLOAD THE LATEST RELEASE AND NOT MAIN BRANCH!**
+> **MAIN BRANCH IS NOT BACKWARD COMPATIBLE IT IS BEING TWEAKED STILL - LATEST RELEASE: [V1.1.1](https://github.com/playingintraffic/graft/releases/tag/v1.1.1)**
+
 # GRAFT - General Runtime Abstraction & Framework Toolkit
 
-📚 **Full Docs:** [Documentation](https://playingintraffic.site/docs/graft)
+📚 **Docs:** [https://playingintraffic.site/docs/graft](https://playingintraffic.site/docs/graft)
+💬 **Support:** [https://discord.gg/MUckUyS5Kq](https://discord.gg/MUckUyS5Kq)
 
-💬 **Support:** [Discord](https://discord.gg/MUckUyS5Kq)
+---
 
 ## What Is GRAFT?
 
-> **Normally?** General Runtime Abstraction & Framework Toolkit  
-> **When it works?** Greatly Reduces All Frustrating Tasks  
-> **When it doesn't?** Goddamn Rage-Angering Frustrating Tool
+> **Normally:** General Runtime Abstraction & Framework Toolkit
+> **In practice:** A practical utility toolkit for FiveM that removes boilerplate and friction
+> **When it breaks:** Goddamn Rage-Angering Frustrating Tool
 
-GRAFT is the evolution of `boii_utils` rewritten, reorganized, and reimagined.  
-A modular utility suite made to eliminate boilerplate, unify frameworks, and stay out of your way in the process.
+GRAFT is a **modular collection of framework-aware and standalone utilities** for FiveM development.
 
-Whether you're building standalone systems or cross-framework scripts, GRAFT does the hard work so you don't have too..
+It can be used **as a normal resource** *or* **file-by-file**, depending on how you prefer to structure your projects.
 
-## Who's It For?
+There are **no forced dependencies** and no requirement to commit to the entire toolkit.
 
-- Framework devs needing reusable base modules
-- Script authors supporting multiple frameworks
-- Solo scripters tired of rewriting the same junk
-- Teams needing shared dev tools across resources
+---
 
-## Why Use GRAFT?
+## Why GRAFT Exists
 
-- **Unified Framework Bridge** - Supports ESX, QB, Ox, ND, QBox & more
-- **Modular** - Load only what you need. Zero hard dependencies.
-- **Reusable Patterns** - Handles the common logic so you don't have to
-- **Consistent Structure** - Shared naming and layout across modules
-- **Time-Saver** - Drop-in tools, clean wrappers, and sane defaults
+GRAFT is, first and foremost, my personal script development kit.
 
-## What's Inside?
+I've used it for over two years to build nearly everything I ship from small standalone scripts to full production systems.
+It's been rewritten, trimmed, reorganized, and stress-tested in real servers, not demos.
+
+The API is intentionally minimal.
+Not because features are missing but because it only covers what you actually need to ship production-ready scripts:
+
+Common framework differences handled once
+Reusable patterns without opinionated bloat
+Utilities that solve real problems, not edge cases
+
+If something isn't here, it's because you probably dont "need" it.
+
+GRAFT isn't meant to impress.
+It's meant to work, quietly, reliably, and without getting in your way
+
+---
+
+## How GRAFT Is Meant to Be Used
+
+### Option A - Use It as a Resource (Traditional)
+
+* Drop `graft` into your resources folder
+* `ensure graft` in your `server.cfg`
+* Use the provided modules internally or via your own require system or through grafts export
+
+```lua
+local commands = exports.graft:require("cfx.fivem.modules.commands")
+```
+
+This works well if you want a **shared utility base** across multiple resources.
+
+---
+
+### Option B - Use Individual Files (Recommended for Scripts)
+
+GRAFT is now designed so **every file is self-contained**.
+
+You may:
+
+* Copy **only the files you need** into your resource
+* Ignore the rest
+* Avoid adding GRAFT as a dependency entirely
+
+This is ideal for:
+
+* Standalone scripts
+* Releases that should not require extra resources
+* Developers who prefer explicit control
+
+---
+
+## `require.lua` (Optional Helper)
+
+If your project **does not already have a Lua `require()` implementation**, GRAFT includes a minimal one:
+
+```
+cfx/require.lua
+```
+
+You may copy this file **once** into your project and reuse it everywhere.
+If you already have a working `require()` helper, you do **not** need this file.
+
+---
+
+## Example Usage
+
+```lua
+local fw = require("framework")
+local inventory = require("inventory")
+local maths = require("maths")
+```
+
+Each module initializes independently and safely shares FiveM runtime state.
+
+---
+
+## What's Included
 
 ### Bridges
 
-- **Framework** - Abstracts player, job, metadata, and other core logic
-- **Notifications** - Works with bduk, boii_ui, okok, ox_lib, etc.
-- **DrawText UI** - Supports boii_ui, okok, esx, qb, and ox variations
+* **Framework**
+* **Inventory** 
+* **Notifications**
+* **DrawText UI**
 
-### Standalone Systems
+---
 
-- **Callbacks** - Framework-free client/server promise callbacks
-- **Commands** - With permissions, ACE support, and helpers
-- **Licences** - Theory/practical tests, XP, revoking - DMV-style
-- **XP System** - Trackable per-player XP with growth curves
+### Standalone Scripts
+
+* **Zone Creator**
+
+---
 
 ### Utility Modules
 
-- **Appearance** - Clothing, tattoos, shared ped styles
-- **Vehicles** - Spawn, save, set properties safely
-- **Items** - Usable item definitions outside any core
-- **Methods** - Attach dynamic functions to players, vehicles, etc.
-- **Player Helpers** - Animations, props, directions, more
-- **Timestamps** - Consistent date/time across client/server
-- **Environment** - Time, weather, season sync and detection
-- **Entities** - NPC, vehicle, and object utility
-- **Profanity** - Replace or block banned words cleanly
-- **Buckets** - Easy routing bucket management + static data store
+* **Commands**
+* **Callbacks**
+* **Cooldowns**
+* **Entities**
+* **Environment**
+* **Keys**
+* **Requests**
+* **Timestamps**
+* **Vehicles**
 
-### Smart Libraries
+---
 
-- **Geometry** - Shapes, zones, distances, vectors, angles
-- **Maths** - Curves, clamping, interpolation, rounding
-- **Strings** - Slugify, wrap, pad, and format
-- **Tables** - Merge, clone, scrub, sample, clean
-- **Keys** - Named input constants with lookup helpers
+### Lightweight Libraries (Framework-Free)
 
-## How's It Structured?
+Located under `standalone/modules`:
 
-- **Bridge-Based** - Abstracted APIs across all major frameworks
-- **Environment-Aware** - Auto-detects user environment
-- **Drop-In Ready** - Use one module or all, no setup hell
-- **Scalable** - Grow projects without growing clutter
+* **Maths**
+* **Strings**
+* **Tables**
 
-Every module is **fully isolated**.
-You can `graft.get("module")` and be ready to roll.
+These modules do **not** depend on FiveM and may be reused anywhere.
 
-## Quick Install
+---
 
-1. **Download GRAFT**  
-   [GitHub Releases](https://github.com/playingintraffic/graft/releases)
+## Project Structure
 
-2. **Add to Resources**  
-   Drop the folder into your server's resources directory
+```
+cfx/
+├─ require.lua            # Optional require helper
+├─ fivem/
+│  ├─ bridges/            # Framework & system bridges
+│  ├─ modules/            # Utility helpers
+│  └─ standalone/         # Framework-free systems
+├─ tests/                 # Validation and test commands
+└─ fxmanifest.lua
+```
 
-3. **Ensure It**  
-   In `server.cfg`:  `ensure graft`
+All modules are:
 
-4. **SQL Setup**
-   Run the included `REQUIRED.sql` to enable XP, licenses, and more
+* Shared-runtime safe
+* Client/server aware where applicable
+* Designed to be copied or reused freely
 
-5. **Restart Server**
-   Bridges will auto-detect your framework.
-   Safe fallback mode if none detected.
+---
+
+## Why Use GRAFT?
+
+* Use it **as a resource** or **as a file library**
+* No forced dependencies
+* Framework-agnostic APIs
+* Consistent structure and naming
+* Built for real scripts, not demos
+
+GRAFT exists to **remove friction**, not introduce another layer of it.
+
+---
 
 ## Support
 
 Need help?
-Ran into bugs?
-Screaming at a missing comma?
+Found a bug?
+Regretting a refactor?
 
-[Join the PIT Discord](https://discord.gg/MUckUyS5Kq)
+👉 [https://discord.gg/MUckUyS5Kq](https://discord.gg/MUckUyS5Kq)
 
-> **Support Hours:** Mon-Fri, 10AM-10PM GMT
-> Outside hours? Sacrifice a chicken or leave a message.
+> **Support Hours:** Mon–Fri, 10AM–10PM GMT
+> Outside hours? Messages are still logged.
+
+---
 
 ## Warning
 
-GRAFT will drastically reduce the amount of dumb code you write.
-Side effects may include:
+Using GRAFT may result in:
 
-* Clean projects
+* Cleaner projects
+* Less duplicated logic
 * Faster development
-* Uncomfortable productivity
+* Mild discomfort from increased productivity
 
 Use responsibly.

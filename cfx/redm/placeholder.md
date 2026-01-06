@@ -1,0 +1,1 @@
+Planning a full redm side will be completed asap.

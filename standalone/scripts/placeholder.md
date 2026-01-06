@@ -1,0 +1,1 @@
+Some ideas just not implemented yet leaving here as a reminder
