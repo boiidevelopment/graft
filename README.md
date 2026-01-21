@@ -1,7 +1,6 @@
 ![GRAFTTHUMB2](https://github.com/user-attachments/assets/e64964a1-19d1-4389-a83a-ce244c66c7c2)
 
-> **CURRENT PIT RESOURCES USE THE LATEST RELEASE VERSION PLEASE DOWNLOAD THE LATEST RELEASE AND NOT MAIN BRANCH!**
-> **MAIN BRANCH IS NOT BACKWARD COMPATIBLE IT IS BEING TWEAKED STILL - LATEST RELEASE: [V1.1.1](https://github.com/playingintraffic/graft/releases/tag/v1.1.1)**
+> **MAIN BRANCH IS NOT BACKWARD COMPATIBLE IT IS BEING TWEAKED STILL - LATEST RELEASE: [V1.1.1](https://github.com/boiidevelopment/graft/releases/tag/v1.1.1)**
 
 # GRAFT - General Runtime Abstraction & Framework Toolkit
 
@@ -185,7 +184,7 @@ Need help?
 Found a bug?
 Regretting a refactor?
 
-👉 [https://discord.gg/MUckUyS5Kq](https://discord.gg/MUckUyS5Kq)
+👉 [Discord](https://discord.gg/MUckUyS5Kq)
 
 > **Support Hours:** Mon–Fri, 10AM–10PM GMT
 > Outside hours? Messages are still logged.

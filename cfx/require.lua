@@ -1,3 +1,18 @@
+--[[
+--------------------------------------------------
+
+This file is part of GRAFT.
+You are free to use these files within your own resources.
+Please retain the original credit and attached MIT license.
+Support honest development.
+
+Author: Case @ BOII Development
+License: MIT (https://github.com/boiidevelopment/graft/blob/main/LICENSE)
+GitHub: https://github.com/boiidevelopment/graft
+
+--------------------------------------------------
+]]
+
 --- @script require
 --- @description Simple "safe require" function for mimicing require("path.to.your.module") in fivem/redm.
 --- Place this file into `shared_scripts` of any resource your are working on and use it to require any additional files you use.

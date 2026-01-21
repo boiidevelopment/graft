@@ -1,13 +1,5 @@
 --[[
 --------------------------------------------------
-┏━┓╻  ┏━┓╻ ╻╻┏┓╻┏━╸   ╻┏┓╻   ╺┳╸┏━┓┏━┓┏━╸┏━╸╻┏━╸
-┣━┛┃  ┣━┫┗┳┛┃┃┗┫┃╺┓   ┃┃┗┫    ┃ ┣┳┛┣━┫┣╸ ┣╸ ┃┃  
-╹  ┗━╸╹ ╹ ╹ ╹╹ ╹┗━┛   ╹╹ ╹    ╹ ╹┗╸╹ ╹╹  ╹  ╹┗━╸
---------------------------------------------------
-┏┓┳┓┏┓┏┓┏┳┓
-┃┓┣┫┣┫┣  ┃ 
-┗┛┛┗┛┗┻  ┻     
---------------------------------------------------
 
 This file is part of GRAFT.
 You are free to use these files within your own resources.
@@ -20,7 +12,7 @@ GitHub: https://github.com/playingintraffic/graft
 
 MIT License
 
-Copyright (c) 2025 Playing In Traffic
+Copyright (c) 2025 BOII Development
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

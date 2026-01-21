@@ -1,3 +1,18 @@
+--[[
+--------------------------------------------------
+
+This file is part of GRAFT.
+You are free to use these files within your own resources.
+Please retain the original credit and attached MIT license.
+Support honest development.
+
+Author: Case @ BOII Development
+License: MIT (https://github.com/boiidevelopment/graft/blob/main/LICENSE)
+GitHub: https://github.com/boiidevelopment/graft
+
+--------------------------------------------------
+]]
+
 --- @module maths
 --- @description Maths utilities beyond standard Lua math library
 
