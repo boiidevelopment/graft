@@ -186,6 +186,23 @@ if not IS_SERVER then
         return math.abs(coords.z - water_height)
     end
 
+    --- Check if the player is near water.
+    --- @param player number The player entity ID.
+    --- @return boolean Whether the player is near water.
+    function m.is_near_water(player)
+        if IsPedSwimming(player) then return false end
+        local bone_coords = GetPedBoneCoords(player, 31086, 0.0, 0.0, 0.0)
+        local forward_coords = GetOffsetFromEntityInWorldCoords(player, 0.0, 5.0, 0.0)
+        local is_near = TestProbeAgainstWater(bone_coords.x, bone_coords.y, bone_coords.z, forward_coords.x, forward_coords.y, forward_coords.z)
+        if not is_near then
+            local distance_to_water = m.get_distance_to_water()
+            if distance_to_water > 0 and distance_to_water <= 5.0 then
+                return true
+            end
+        end
+        return is_near
+    end
+
     --- Get zone scumminess level.
     --- @return number: Scumminess (0-5) or -1 if unknown
     function m.get_zone_scumminess()
