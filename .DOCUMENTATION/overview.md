@@ -18,7 +18,7 @@ No forced dependencies. No commitment to the entire toolkit.
 
 GRAFT is my personal script development kit.
 
-I've used it for over two years to build nearly everything I ship - from small standalone scripts to full production systems.
+I've used it for over two years to build nearly everything I ship *(originally boii_utils)* - from small standalone scripts to full production systems.
 It's been rewritten, trimmed, reorganized, and stress-tested in real servers, not demos.
 
 The API is intentionally minimal.
@@ -51,7 +51,7 @@ Works well for a **shared utility base** across multiple resources.
 
 ---
 
-### Option B - Embedded Library (Recommended)
+### Option B - Embedded Library
 
 Copy the `graft` folder into your resource (e.g., `myresource/lib/graft/`), update your `fxmanifest.lua`:
 
@@ -78,7 +78,7 @@ Ideal for:
 
 ---
 
-### Option C - Individual Files
+### Option C - Individual Files (Recommended)
 
 Every file is self-contained. Copy only what you need:
 
@@ -108,8 +108,8 @@ No resource dependency. No bloat.
 ### FiveM Modules (`graft/fivem/modules/`)
 * **animations.lua** - Animation helpers
 * **callbacks.lua** - Client/server callback system
-* **commands.lua** - Enhanced command registration
-* **cooldowns.lua** - Simple cooldown management
+* **commands.lua** - Simple ace perms command registration
+* **cooldowns.lua** - Global or per player cooldown management
 * **entities.lua** - Entity helper functions
 * **environment.lua** - Weather, time, and world state
 * **keys.lua** - Keybind management
@@ -118,7 +118,7 @@ No resource dependency. No bloat.
 * **vehicles.lua** - Vehicle-specific helpers
 
 ### FiveM Scripts (`graft/fivem/scripts/`)
-* **zone_creator.lua** - Interactive zone creation tool
+* **zone_creator.lua** - Simple zone creation tool: https://github.com/CaseIRL/fivem_zone_creator
 
 ### Standalone Modules (`graft/standalone/modules/`)
 * **maths.lua** - Math utilities
