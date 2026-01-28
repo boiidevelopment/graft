@@ -51,7 +51,7 @@ Works well for a **shared utility base** across multiple resources.
 
 ---
 
-### Option B - Embedded Library (Recommended)
+### Option B - Embedded Library
 
 Copy the `graft` folder into your resource (e.g., `myresource/lib/graft/`), update your `fxmanifest.lua`:
 
@@ -78,7 +78,7 @@ Ideal for:
 
 ---
 
-### Option C - Individual Files
+### Option C - Individual Files (Recommended)
 
 Every file is self-contained. Copy only what you need:
 
