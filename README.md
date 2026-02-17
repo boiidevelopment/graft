@@ -1,3 +1,5 @@
+# FOR CURRENT BOII/PIT SCRIPTS USE RELEASE VERSION 1.1.3! MAIN BRANCH 1.2.0 IS NOT BACKWARDS COMPATIBLE
+
 # GRAFT - General Runtime Abstraction & Framework Toolkit
 
 **[Documentation](https://boii.dev)**
