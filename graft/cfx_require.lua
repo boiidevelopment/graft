@@ -15,8 +15,8 @@ GitHub: https://github.com/boiidevelopment/graft
 
 --- @script require
 --- @description Simple "safe require" function for mimicing require("path.to.your.module") in fivem/redm.
---- Place this file into `shared_scripts` of any resource your are working on and use it to require any additional files you use.
---- @example 
+--- Place this file into `shared_scripts` of any resource you are working on and use it to require any additional files you use.
+--- @example
 ---
 --- local framework_bridge = require("framework")
 --- local player = framework_bridge.get_player(source)
@@ -28,31 +28,26 @@ local CACHE = {}
 
 --- @section Functions
 
-local function safe_require(key)
-    if type(key) ~= "string" then
-        return nil
-    end
+local function safe_require(key, external, env)
+    if type(key) ~= "string" then return nil end
+
+    local external = external or false
+    local resource = external and GetInvokingResource() or RESOURCE
 
     local rel_path = key:gsub("%.", "/")
-    if not rel_path:match("%.lua$") then
-        rel_path = rel_path .. ".lua"
-    end
+    if not rel_path:match("%.lua$") then rel_path = rel_path .. ".lua" end
 
-    local cache_key = RESOURCE .. ":" .. rel_path
-    local cached = CACHE[cache_key]
-    if cached then
-        return cached
-    end
+    local cache_key = ("%s:%s"):format(resource, rel_path)
+    if not external and CACHE[cache_key] then return CACHE[cache_key] end
 
-    local file = LoadResourceFile(RESOURCE, rel_path)
+    local file = LoadResourceFile(resource, rel_path)
     if not file then
         print(("[require] module not found: %s"):format(rel_path))
         return nil
     end
 
-    local env = setmetatable({}, { __index = _G })
-    local chunk, err = load(file, ("@@%s/%s"):format(RESOURCE, rel_path), "t", env)
-
+    local env = setmetatable(env or {}, { __index = _G })
+    local chunk, err = load(file, ("@@%s/%s"):format(resource, rel_path), "t", env)
     if not chunk then
         print(("[require] compile error in %s:\n%s"):format(rel_path, err))
         return nil
@@ -69,9 +64,10 @@ local function safe_require(key)
         return nil
     end
 
-    CACHE[cache_key] = result
+    if not external then CACHE[cache_key] = result end
     return result
 end
 
 _G.require = safe_require
 exports("require", safe_require)
+exports("get", safe_require)
