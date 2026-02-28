@@ -67,7 +67,7 @@ end
 --- @section Inventory Bridge
 --- @description Make sure you update INVENTORY_BRIDGE_PATH to your file path to the inventory bridge if required.
 
-local INVENTORY_BRIDGE_PATH = "cfx.fivem.bridges.inventory"
+local INVENTORY_BRIDGE_PATH = "graft.fivem.bridges.inventory"
 local INVENTORY_BRIDGE = safe_require(INVENTORY_BRIDGE_PATH)
 
 --- @section Framework Objects
@@ -1148,9 +1148,9 @@ if IS_SERVER then
             if INVENTORY_BRIDGE and INVENTORY_BRIDGE.register_item then
                 return INVENTORY_BRIDGE.register_item(item, cb)
             end
-             
+
             if not item then return false end
-            
+
             FW.Functions.CreateUseableItem(item, function(source)
                 cb(source)
             end)

@@ -18,6 +18,13 @@ GitHub: https://github.com/boiidevelopment/graft
 --- Used by the framework bridge for inventory functions first if included.
 --- Not required for servers just running basic settings only for ones with custom resources.
 
+--- @section Guard
+
+if rawget(_G, "__bridges_inv_module") then
+    return _G.__bridges_inv_module
+end
+
+
 --- @section Constants
 
 local AUTO_DETECT_INVENTORY = GetConvar("bridge:inventory:auto_detect", "true") == "true"
@@ -32,15 +39,22 @@ local INVENTORIES = {
 
 --- @section Initialization
 
+print("[inventory bridge] auto detect: " .. tostring(AUTO_DETECT_INVENTORY))
+print("[inventory bridge] default active: " .. tostring(ACTIVE_INVENTORY))
+
 if AUTO_DETECT_INVENTORY then
     for _, resource in ipairs(INVENTORIES) do
-        if GetResourceState(resource) == "started" then
+        local state = GetResourceState(resource)
+        print("[inventory bridge] checking: " .. resource .. " -> " .. tostring(state))
+        if state == "started" then
             ACTIVE_INVENTORY = resource
+            print("[inventory bridge] detected: " .. resource)
             break
         end
     end
 end
 
+print("[inventory bridge] final active inventory: " .. tostring(ACTIVE_INVENTORY))
 --- @section Implementations
 
 local IS_SERVER = IsDuplicityVersion()
@@ -90,8 +104,8 @@ if IS_SERVER then
         end,
 
         register_item = function(item, cb) 
-            if not item or type(cb) ~= "function" then return false end
-            
+            if not item then return false end
+
             exports(item, function(event, itemData, inventory, slot, data)
                 local src = inventory.id or source
                 if event == "usedItem" then
@@ -141,4 +155,5 @@ if IS_SERVER then
     }
 end
 
-return IMPL[ACTIVE_INVENTORY]
+_G.__bridges_inv_module = IMPL[ACTIVE_INVENTORY] or IMPL.__bridges_inv_module
+return _G.__bridges_inv_module
