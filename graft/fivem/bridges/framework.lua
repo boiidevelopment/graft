@@ -850,9 +850,8 @@ if IS_SERVER then
             local required_amount = item_amount or 1
             local player = FW.Functions.GetPlayer(source)
             if not player then return false end
-            
-            local item = player.Functions.GetItemByName(item_name)
-            return item and item.amount >= required_amount
+
+            return player.Functions.HasItem(item_name, required_amount)
         end,
 
         add_item = function(source, item_id, amount, data)
@@ -860,11 +859,7 @@ if IS_SERVER then
                 return INVENTORY_BRIDGE.add_item(source, item_id, amount, data)
             end
 
-            local player = FW.Functions.GetPlayer(source)
-            if not player then return false end
-
-            player.Functions.AddItem(item_id, amount, nil, data)
-            TriggerClientEvent("qb-inventory:client:ItemBox", source, FW.Shared.Items[item_id], "add", amount)
+            exports['qb-inventory']:AddItem(source, item_id, amount, nil, data)
             return true
         end,
 
@@ -873,11 +868,7 @@ if IS_SERVER then
                 return INVENTORY_BRIDGE.remove_item(source, item_id, amount)
             end
 
-            local player = FW.Functions.GetPlayer(source)
-            if not player then return false end
-
-            player.Functions.RemoveItem(item_id, amount)
-            TriggerClientEvent("qb-inventory:client:ItemBox", source, FW.Shared.Items[item_id], "remove", amount)
+            exports['qb-inventory']:RemoveItem(source, item_id, amount)
             return true
         end,
 
