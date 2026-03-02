@@ -1,5 +1,7 @@
 # MOST BOII/PIT SCRIPTS STILL REQUIRE GRAFT 1.1.3 THESE ARE BEING UPDATED A.S.A.P BELOW LIST WORKS WITH V1.2.1
 > - pit_drug_system
+> - boii_brewing
+> - boii_pettycrimes
 
 # GRAFT - General Runtime Abstraction & Framework Toolkit
 
