@@ -52,6 +52,7 @@ function m.contains(tbl, val)
     end
     return false
 end
+m.table_contains = contains
 
 --- Creates a deep copy of a table, ensuring changes to the copy won't affect the original table.
 --- @param t table: The table to copy.
@@ -72,6 +73,7 @@ function m.copy(t)
 
     return copy
 end
+m.deep_copy = copy
 
 --- Compares two nested tables to check if they are equal.
 --- @param t1 table: The first table.

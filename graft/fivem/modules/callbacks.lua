@@ -52,6 +52,7 @@ if IS_SERVER then
 
         sv_callbacks[name] = cb
     end
+    m.register_callback = register
 
     --- @section Events
 
@@ -92,6 +93,7 @@ if not IS_SERVER then
         cl_callbacks[cb_id] = cb
         TriggerServerEvent(RESOURCE_NAME .. ":sv:trigger", name, data, cb_id)
     end
+    m.trigger_callback = trigger
 
     --- @section Events
 

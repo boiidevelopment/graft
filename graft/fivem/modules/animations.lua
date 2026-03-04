@@ -113,6 +113,7 @@ if not IS_SERVER then
             end
         end
     end
+    m.play_animation = play
 
 end
 
