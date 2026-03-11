@@ -99,7 +99,7 @@ if IS_SERVER then
 
         return true
     end
-    m.register_command = register
+    m.register_command = m.register
 
     --- @section Events
 
@@ -130,7 +130,7 @@ if not IS_SERVER then
     function m.get_suggestions()
         TriggerServerEvent(RESOURCE_NAME .. "sv:get_suggestions")
     end
-    m.get_command_suggestions = get_suggestions
+    m.get_command_suggestions = m.get_suggestions
 
 end
 

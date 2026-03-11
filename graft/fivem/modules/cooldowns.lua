@@ -53,7 +53,7 @@ if IS_SERVER then
         resource_cooldowns[resource] = resource_cooldowns[resource] or {}
         table.insert(resource_cooldowns[resource], { source = source, cooldown_type = cooldown_type, is_global = is_global })
     end
-    m.add_cooldown = add
+    m.add_cooldown = m.add
 
     --- Checks if a cooldown is active.
     --- @param source number: Player/server ID.
@@ -67,7 +67,7 @@ if IS_SERVER then
         end
         return player_cooldowns[source] and player_cooldowns[source][cooldown_type] and now < player_cooldowns[source][cooldown_type].end_time
     end
-    m.check_cooldown = check
+    m.check_cooldown = m.check
 
     --- Clears a specific cooldown.
     --- @param source number: Player/server ID.
@@ -81,7 +81,7 @@ if IS_SERVER then
             player_cooldowns[source][cooldown_type] = nil
         end
     end
-    m.clear_cooldown = clear
+    m.clear_cooldown = m.clear
 
     --- Clears all expired m.
     function m.clear_all()
@@ -103,7 +103,7 @@ if IS_SERVER then
             end
         end
     end
-    m.clear_cooldowns = clear_all
+    m.clear_cooldowns = m.clear_all
 
     --- Clears all cooldowns for a given resource.
     --- @param resource string: Resource name.
@@ -121,7 +121,7 @@ if IS_SERVER then
 
         resource_cooldowns[resource] = nil
     end
-    m.clear_resource_cooldowns = clear_resource
+    m.clear_resource_cooldowns = m.clear_resource
     
 end
 
