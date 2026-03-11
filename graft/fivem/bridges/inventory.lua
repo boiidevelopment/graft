@@ -71,10 +71,11 @@ if IS_SERVER then
             return item and item.count and item.count > 0 and item or nil
         end,
 
-       has_item = function(source, item_name, item_amount)
+        has_item = function(source, item_name, item_amount)
             local required_amount = item_amount or 1
-            local count = exports.ox_inventory:GetItemCount(source, item_name, nil, false)
-            return count >= required_amount
+            local count = exports.ox_inventory:GetItemCount(source, item_name)
+            print(("^3[DEBUG] has_item -> source: %s | item: %s | count: %s | required: %s^0"):format(source, item_name, tostring(count), required_amount))
+            return (count or 0) >= required_amount
         end,
 
         add_item = function(source, item_id, amount, data)
@@ -108,8 +109,9 @@ if IS_SERVER then
 
             exports(item, function(event, itemData, inventory, slot, data)
                 local src = inventory.id or source
-                if event == "usedItem" then
+                if event == "usingItem" then
                     cb(src, itemData, slot, data)
+                    return false
                 end
             end)
             

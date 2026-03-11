@@ -17,7 +17,7 @@ fx_version "cerulean"
 games { "gta5", "rdr3" }
 
 name "graft"
-version "1.3.1"
+version "1.4.0"
 description "Handles the hard GRAFT, so you dont have to."
 author "Case"
 repository "https://github.com/boiidevelopment/graft"
