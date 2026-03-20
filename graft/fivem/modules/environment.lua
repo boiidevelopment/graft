@@ -203,6 +203,16 @@ if not IS_SERVER then
         return is_near
     end
 
+    --- Check if entity is in water, optionally excluding swimming.
+    --- @param entity number: The entity to check.
+    --- @param allow_swimming boolean|nil: If false, returns false when swimming (default: false).
+    --- @return boolean
+    function m.is_in_water(entity, allow_swimming)
+        if not IsEntityInWater(entity) then return false end
+        if not allow_swimming and IsPedSwimming(entity) then return false end
+        return true
+    end
+
     --- Get zone scumminess level.
     --- @return number: Scumminess (0-5) or -1 if unknown
     function m.get_zone_scumminess()

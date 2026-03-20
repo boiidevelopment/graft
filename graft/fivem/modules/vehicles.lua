@@ -144,13 +144,20 @@ if IS_SERVER then
             return nil
         end
 
+        local source_ped = options.source and GetPlayerPed(options.source)
+        local is_inside = false
+        if source_ped and source_ped ~= 0 then
+            is_inside = GetPedInVehicleSeat(vehicle, -1) == source_ped or GetPedInVehicleSeat(vehicle, 0) == source_ped or GetPedInVehicleSeat(vehicle, 1) == source_ped or GetPedInVehicleSeat(vehicle, 2) == source_ped or GetPedInVehicleSeat(vehicle, 3) == source_ped
+        end
+
         return {
             entity = vehicle,
             model = GetEntityModel(vehicle),
             coords = GetEntityCoords(vehicle),
             heading = GetEntityHeading(vehicle),
             plate = m.get_plate(vehicle),
-            plate_index = m.get_plate_index(vehicle)
+            plate_index = m.get_plate_index(vehicle),
+            is_inside = is_inside
         }
     end
 
